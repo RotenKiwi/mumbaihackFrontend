@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
+import 'package:camera/camera.dart';
+import 'package:path_provider/path_provider.dart';
 
 import '../Components/DressCard.dart';
 
@@ -10,26 +13,69 @@ class Landing extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          SizedBox(
-            height: 300,
-            width: 400,
+          const SizedBox(height: 30,),
+          Expanded(
+            flex: 3,
             child: ListView.builder(
                 padding: EdgeInsets.zero,
                 scrollDirection: Axis.horizontal,
                 itemCount: 6,
                 itemBuilder: (context, index) {
-                  return DressCard();
+                  return const DressCard();
                 }),
           ),
+          Expanded(
+            flex: 2,
+            child: ListView.builder(
+                padding: EdgeInsets.zero,
+                scrollDirection: Axis.horizontal,
+                itemCount: 6,
+                itemBuilder: (context, index) {
+                  return const DressCard();
+                }),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 15),
+            child: Row(
+              children: [
+                const Spacer(),
+                ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(40)),
+                  child: Container(
+                    color: Colors.greenAccent,
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 15.0),
+                      child: Text(
+                        'Gallery',
+                        style: TextStyle(
+                          fontSize: 40,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const Spacer(),
+                ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(40)),
+                  child: Container(
+                    color: Colors.greenAccent,
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 15.0),
+                      child: Text(
+                        'Camera',
+                        style: TextStyle(
+                          fontSize: 40,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const Spacer()
+              ],
+            ),
+          ),
+          const SizedBox(height: 10,)
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Icon(
-          Icons.camera,
-          color: Colors.black,
-          size: 30,
-        ),
       ),
     );
   }
