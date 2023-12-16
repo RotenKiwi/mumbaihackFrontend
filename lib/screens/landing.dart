@@ -1,16 +1,22 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:stylesynth/screens/camera_click.dart';
 
 import '../Components/DressCard.dart';
 
 class Landing extends StatelessWidget {
-  const Landing({Key? key}) : super(key: key);
+  const Landing({Key? key, required this.camera}) : super(key: key);
+
+  final CameraDescription camera;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
-          const SizedBox(height: 30,),
+          const SizedBox(
+            height: 30,
+          ),
           Expanded(
             flex: 3,
             child: ListView.builder(
@@ -40,13 +46,16 @@ class Landing extends StatelessWidget {
                   borderRadius: const BorderRadius.all(Radius.circular(40)),
                   child: Container(
                     color: Colors.greenAccent,
-                    child: const Padding(
+                    child: Padding(
                       padding: EdgeInsets.symmetric(horizontal: 15.0),
-                      child: Text(
-                        'Gallery',
-                        style: TextStyle(
-                          fontSize: 40,
+                      child: TextButton(
+                        child: Text(
+                          'Gallery',
+                          style: TextStyle(
+                            fontSize: 40,
+                          ),
                         ),
+                        onPressed: () {},
                       ),
                     ),
                   ),
@@ -56,13 +65,23 @@ class Landing extends StatelessWidget {
                   borderRadius: const BorderRadius.all(Radius.circular(40)),
                   child: Container(
                     color: Colors.greenAccent,
-                    child: const Padding(
+                    child: Padding(
                       padding: EdgeInsets.symmetric(horizontal: 15.0),
-                      child: Text(
-                        'Camera',
-                        style: TextStyle(
-                          fontSize: 40,
+                      child: TextButton(
+                        child: Text(
+                          'Camera',
+                          style: TextStyle(
+                            fontSize: 40,
+                            color: Colors.black,
+                          ),
                         ),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      TakePictureScreen(camera: camera)));
+                        },
                       ),
                     ),
                   ),
@@ -71,7 +90,9 @@ class Landing extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(height: 10,)
+          const SizedBox(
+            height: 10,
+          )
         ],
       ),
     );

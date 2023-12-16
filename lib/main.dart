@@ -13,5 +13,5 @@ Future<void> main() async {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Landing()));
+      home: Landing(camera: firstCamera,)));
 }
