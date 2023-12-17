@@ -4,6 +4,7 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:stylesynth/screens/camera_click.dart';
+import 'package:stylesynth/screens/result.dart';
 
 import '../Components/DressCard.dart';
 
@@ -152,6 +153,7 @@ Future getImage(
         () {
       if (xfilePick != null) {
         galleryFile = File(pickedFile!.path);
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>Results()));
       } else {
         ScaffoldMessenger.of(context).showSnackBar(// is this context <<<
             const SnackBar(content: Text('Nothing is selected')));
