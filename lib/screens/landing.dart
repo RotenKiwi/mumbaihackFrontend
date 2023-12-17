@@ -20,6 +20,21 @@ class Landing extends StatefulWidget {
 class _LandingState extends State<Landing> {
   File? galleryFile;
   final picker = ImagePicker();
+
+  List<String> shirtimages = [
+    'assets/homepagedress1.png',
+    'assets/homepageimage2.png',
+    'assets/homepageimage3.png',
+    'assets/homepageimage4.png',
+  ];
+
+  List<String> offers = [
+    'assets/amazon.png',
+    'assets/flipkart.png',
+    'assets/alibaba.png',
+    'assets/myntra.png',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,26 +43,36 @@ class _LandingState extends State<Landing> {
           const SizedBox(
             height: 30,
           ),
-          Expanded(
-            flex: 3,
+          Text('Current Trending               ', style: TextStyle(
+            fontSize: 35,
+          ), textAlign: TextAlign.start,),
+          SizedBox(
+            height: 400,
+            width: 500,
             child: ListView.builder(
                 padding: EdgeInsets.zero,
                 scrollDirection: Axis.horizontal,
-                itemCount: 6,
+                itemCount: shirtimages.length,
                 itemBuilder: (context, index) {
-                  return const DressCard();
+                  return DressCard(shirts: shirtimages, index: index,);
                 }),
           ),
-          Expanded(
-            flex: 2,
+          SizedBox(height: 20,),
+          Text('Current Offers               ', style: TextStyle(
+            fontSize: 35,
+          ), textAlign: TextAlign.start,),
+          SizedBox(
+            height: 200,
+            width: 500,
             child: ListView.builder(
                 padding: EdgeInsets.zero,
                 scrollDirection: Axis.horizontal,
-                itemCount: 6,
+                itemCount: 4,
                 itemBuilder: (context, index) {
-                  return const DressCard();
+                  return DressCard(shirts: offers, index: index,);
                 }),
           ),
+          Spacer(),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 15),
             child: Row(

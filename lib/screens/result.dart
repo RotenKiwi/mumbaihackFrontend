@@ -35,13 +35,13 @@ class _ResultsState extends State<Results> {
       'assets/blackhoodie.png',
     ];
 
-    List<Uri> shirtlinks = [
-      Uri.parse('https://www.amazon.com/Plain-Black-Shirts-Athletic-Blank/dp/B07BR8HTJ8'),
-      Uri.parse('https://www.amazon.com/Kirkland-Mens-Crew-Black-T-Shirts/dp/B07CN8KHXV'),
-      Uri.parse('https://www.amazon.com/Plain-Black-Shirts-Athletic-Blank/dp/B07BR8HTJ8'),
-      Uri.parse('https://www.amazon.com/Plain-Black-Shirts-Athletic-Blank/dp/B07BR8HTJ8'),
-      Uri.parse('https://www.amazon.com/Plain-Black-Shirts-Athletic-Blank/dp/B07BR8HTJ8'),
-      Uri.parse('https://www.amazon.com/Plain-Black-Shirts-Athletic-Blank/dp/B07BR8HTJ8'),
+    List<String> shirtlinks = [
+      'Amazon',
+      'Amazon',
+      'filmyvastra.com',
+      'fjackets.com',
+      'teefly.in',
+      'fjackets.com',
     ];
 
     return Scaffold(
@@ -78,11 +78,7 @@ class _ResultsState extends State<Results> {
                             children: [
                               Expanded(flex:8,child: Image.asset(shirtimages[index])),
                               Spacer(),
-                              Expanded(flex:2,child: TextButton(child: Text('Buy'), onPressed: () async{
-                                if (!await launchUrl(shirtlinks[index])) {
-                                throw Exception('Could not launch ${shirtlinks[index]}');
-                                }
-                              },))
+                              Expanded(flex:2,child: Text('Buy it on ${shirtlinks[index]}'))
                             ],
                           )),
                         );
@@ -90,9 +86,9 @@ class _ResultsState extends State<Results> {
                 ),
                 Expanded(
                   child: Container(
-                    child: Text('heh'),
+                    child: Text(''),
                   ),
-                  flex: 1,
+                  flex: 0,
                 )
               ],
             ),
